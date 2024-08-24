@@ -1,0 +1,59 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Frontend
+build_property.RootNamespace = Frontend
+build_property.ProjectDir = D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/Pages/CampaignManagment.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDYW1wYWlnbk1hbmFnbWVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/Pages/ClientConfig.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDbGllbnRDb25maWcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/Pages/ClientProfile.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDbGllbnRQcm9maWxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-cj3fj28uav
+
+[D:/Projects/QuipuTest/src/AlexMedia/AlexMediaSolution/Frontend/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ftcrkoicqg

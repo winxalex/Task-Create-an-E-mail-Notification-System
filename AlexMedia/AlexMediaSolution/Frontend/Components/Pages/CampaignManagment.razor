@@ -1,0 +1,79 @@
+﻿@page "/campaign-management"
+@attribute [Authorize(Roles = "Admin")]
+@inject CampaignService CampaignService
+
+<h2>Campaign Management</h2>
+
+<div class="mb-3">
+	<label for="subject" class="form-label">Subject:</label>
+	<input type="text" id="subject" @bind="subject" class="form-control" />
+</div>
+
+<div class="mb-3">
+	<label for="senderEmail" class="form-label">Sender Email:</label>
+	<input type="email" id="senderEmail" @bind="senderEmail" class="form-control" />
+</div>
+
+<InputFile OnChange="@HandleFileSelection" disabled="@isLoading" />
+<button @onclick="StartCampaign" disabled="@(!fileSelected || isLoading || string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(senderEmail))" class="btn btn-primary">Start Campaign</button>
+
+@if (isLoading)
+{
+	<div class="spinner-border" role="status">
+		<span class="visually-hidden">Loading...</span>
+	</div>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+	<div class="alert alert-danger mt-3" role="alert">
+		@errorMessage
+	</div>
+}
+
+@if (campaignStarted)
+{
+	<p>Campaign started successfully!</p>
+}
+
+@code {
+	private bool fileSelected = false;
+	private bool campaignStarted = false;
+	private bool isLoading = false;
+	private IBrowserFile? selectedFile;
+	private string? errorMessage;
+	private string? subject;
+	private string? senderEmail;
+
+	private void HandleFileSelection(InputFileChangeEventArgs e)
+	{
+		selectedFile = e.File;
+		fileSelected = selectedFile != null;
+		errorMessage = string.Empty;
+	}
+
+	private async Task StartCampaign()
+	{
+		if (fileSelected && selectedFile != null && !string.IsNullOrWhiteSpace(subject) && !string.IsNullOrWhiteSpace(senderEmail))
+		{
+			isLoading = true;
+			StateHasChanged();
+
+			try
+			{
+				using var stream = selectedFile.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024); // 10 MB max
+				await CampaignService.StartCampaignAsync(subject, senderEmail, stream);
+				campaignStarted = true;
+			}
+			catch (Exception ex)
+			{
+				errorMessage = $"Error starting campaign: {ex.Message}";
+			}
+			finally
+			{
+				isLoading = false;
+				StateHasChanged();
+			}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+﻿@page "/"
+@attribute [Authorize]
+
+<h1>Welcome to AlexMedia Email Notification System</h1>
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <p>You have admin access.</p>
+        <NavLink class="nav-link" href="client-config">
+            Client Configuration
+        </NavLink>
+        <NavLink class="nav-link" href="campaign-management">
+            Campaign Management
+        </NavLink>
+    </Authorized>
+</AuthorizeView>
+
+<AuthorizeView Roles="Client">
+    <Authorized>
+        <p>Welcome, client!</p>
+        <NavLink class="nav-link" href="client-profile">
+            Your Profile
+        </NavLink>
+    </Authorized>
+</AuthorizeView>

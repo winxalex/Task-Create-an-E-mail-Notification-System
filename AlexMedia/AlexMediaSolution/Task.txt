@@ -1,0 +1,59 @@
+Task: Create an E-mail Notification System
+
+The owner of the system is the company AlexMedia, and the plan is to send e-mail notifications to their more than one million clients. The service should have configurable settings and e-mail templates, and based on the settings, send e-mails.
+
+Sending of mails is triggered by other systems via some event (the event has a predefined data set for the message) in some message queue engine. The system should be scalable and able to send a large number of mails in parallel.
+
+On the UI side, there should be a possibility for configuration per client. Also, the system should have an admin UI that will enable the possibility for mass sending of mails for campaigns (clients with all data are in XML format with 100k+ records).
+
+The only limit for architecture, design, mocking, and implementation is to have an accent on Microsoft technologies. The solution should be provided on GitHub.
+
+User Story:
+
+External system triggers e-mail sending.
+Service accepts it.
+Service checks for a configuration and a template.
+System renders e-mail.
+System sends e-mail.
+Example for XML for mass sending:
+
+ 
+
+<Clients>
+
+    <Client ID="12345">
+
+        <Template Id="1">
+
+            <Name>TemplateName.html</Name>
+
+            <MarketingData>{json data string representation}</MarketingData>
+
+        </Template>
+
+    </Client>
+
+    <Client ID="54321">
+
+        <Template Id="2">
+
+            <Name>TemplateName2.html</Name>
+
+            <MarketingData>{json data string representation}</MarketingData>
+
+        </Template>
+
+    </Client>
+
+    <!-- More clients -->
+
+</Clients>
+
+
+[XML File] -> [Azure Blob Storage] -> [Import Function] -> [Cosmos DB]
+                                                               ^
+                                                               |
+[External System] -> [Service Bus] -> [Email Function] --------+
+                                            |
+                                            v
+                                      [Email Service]

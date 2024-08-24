@@ -1,0 +1,90 @@
+﻿@page "/client-config"
+@attribute [Authorize(Roles = "Admin")]
+@inject ClientDataService ClientDataService
+@inject TemplateService TemplateService
+
+<h2>Client Configuration</h2>
+
+<div class="form-group">
+    <label for="clientId">Client ID:</label>
+    <InputText id="clientId" @bind-Value="clientId" class="form-control" />
+    <button class="btn btn-secondary" @onclick="LoadClientData">Load Client</button>
+</div>
+
+@if (clientLoaded)
+{
+                                <EditForm Model="@clientData" OnValidSubmit="@HandleValidSubmit">
+                                    <DataAnnotationsValidator />
+                                    <ValidationSummary />
+
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <InputText id="email" @bind-Value="clientData.Email" class="form-control" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Templates:</label>
+            @foreach (var template in clientTemplates)
+            {
+                                                                <div class="d-flex align-items-center mb-2">
+                                                                    <span class="mr-2">@template.Name</span>
+                                                                    <button class="btn btn-sm btn-danger" @onclick="() => RemoveTemplate(template.Id)">Remove</button>
+                                                                </div>
+            }
+                                    </div>
+
+
+
+                                    <button type="submit" class="btn btn-primary">Save Client</button>
+                                </EditForm>
+
+                                <h3>Upload Template</h3>
+                                <InputFile OnChange="@LoadTemplate" />
+}
+
+@code {
+    private string clientId = string.Empty;
+    private ClientData clientData = new ClientData();
+    private List<EmailTemplate> clientTemplates = new List<EmailTemplate>();
+    private bool clientLoaded = false;
+
+    private async Task LoadClientData()
+    {
+        if (!string.IsNullOrEmpty(clientId))
+        {
+            clientData = await ClientDataService.GetClientDataAsync(clientId) ?? new ClientData { Id = clientId };
+            clientTemplates = await TemplateService.GetClientTemplatesAsync(clientId);
+            clientLoaded = true;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await ClientDataService.UpsertClientDataAsync(clientData);
+    }
+
+    private async Task LoadTemplate(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null && !string.IsNullOrEmpty(clientId))
+        {
+            var template = new EmailTemplate
+                {
+                    Name = file.Name,
+                    Content = await new StreamReader(file.OpenReadStream()).ReadToEndAsync(),
+                    ClientId = clientId
+                };
+            var savedTemplate = await TemplateService.SaveTemplateAsync(template);
+            if (savedTemplate != null)
+            {
+                clientTemplates = await TemplateService.GetClientTemplatesAsync(clientId);
+            }
+        }
+    }
+
+    private async Task RemoveTemplate(string templateId)
+    {
+        await TemplateService.DeleteTemplateAsync(clientId,templateId);
+        clientTemplates = await TemplateService.GetClientTemplatesAsync(clientId);
+    }
+}

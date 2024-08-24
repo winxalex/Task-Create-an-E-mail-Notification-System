@@ -1,0 +1,104 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\Frontend.csproj": {}
+  },
+  "projects": {
+    "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\Frontend.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\Frontend.csproj",
+        "projectName": "Frontend",
+        "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\Frontend.csproj",
+        "packagesPath": "C:\\Users\\xxx\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\xxx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj": {
+                "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Identity.Web": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.Identity.Web.UI": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj",
+        "projectName": "WINX",
+        "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    }
+  }
+}
