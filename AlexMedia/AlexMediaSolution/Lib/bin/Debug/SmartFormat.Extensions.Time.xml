@@ -1,0 +1,388 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartFormat.Extensions.Time</name>
+    </assembly>
+    <members>
+        <member name="T:SmartFormat.Extensions.TimeFormatter">
+            <summary>
+            A class to format and output <see cref="T:System.TimeSpan"/> values.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.TimeFormatter.Names">
+            <summary>
+            Obsolete. <see cref="T:SmartFormat.Core.Extensions.IFormatter"/>s only have one unique name.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.TimeFormatter.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:SmartFormat.Extensions.TimeFormatter.CanAutoDetect">
+            <inheritdoc/>
+        </member>
+        <member name="M:SmartFormat.Extensions.TimeFormatter.#ctor">
+            <summary>
+            Initializes the extension with a default <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/>.
+            </summary>
+            <remarks>
+            Culture is determined in this sequence:<br/>
+            1. Get the culture from the <see cref="P:SmartFormat.Core.Formatting.FormattingInfo.FormatterOptions"/>.<br/>
+            2. Get the culture from the <see cref="T:System.IFormatProvider"/> argument (which may be a <see cref="T:System.Globalization.CultureInfo"/>) to <see cref="M:SmartFormat.SmartFormatter.Format(System.IFormatProvider,System.String,System.Object[])"/><br/>
+            3. The <see cref="P:System.Globalization.CultureInfo.CurrentUICulture"/>.<br/><br/>
+            <see cref="T:SmartFormat.Extensions.TimeFormatter"/> makes use of <see cref="T:SmartFormat.Utilities.PluralRules"/> and <see cref="T:SmartFormat.Extensions.PluralLocalizationFormatter"/>.
+            </remarks>
+        </member>
+        <member name="M:SmartFormat.Extensions.TimeFormatter.#ctor(System.String)">
+            <summary>
+            Initializes the extension with a default <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/>.
+            </summary>
+            <remarks>
+            Culture is determined in this sequence:<br/>
+            1. Get the culture from the <see cref="P:SmartFormat.Core.Formatting.FormattingInfo.FormatterOptions"/>.<br/>
+            2. Get the culture from the <see cref="T:System.IFormatProvider"/> argument (which may be a <see cref="T:System.Globalization.CultureInfo"/>) to <see cref="M:SmartFormat.SmartFormatter.Format(System.IFormatProvider,System.String,System.Object[])"/><br/>
+            3. The <see cref="P:System.Globalization.CultureInfo.CurrentUICulture"/>.<br/><br/>
+            <see cref="T:SmartFormat.Extensions.TimeFormatter"/> makes use of <see cref="T:SmartFormat.Utilities.PluralRules"/> and <see cref="T:SmartFormat.Extensions.PluralLocalizationFormatter"/>.
+            </remarks>
+        </member>
+        <member name="P:SmartFormat.Extensions.TimeFormatter.DefaultFormatOptions">
+            <summary>
+            Determines the options for time formatting.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.TimeFormatter.FallbackLanguage">
+            <summary>
+            Gets or sets, the fallback language that is used if no supported language was found.
+            Default is "en". If no fallback language shall be used, set it to <see cref="F:System.String.Empty"/>.
+            </summary>
+            <exception cref="T:System.Exception">If no <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> could be found for the language.</exception>
+        </member>
+        <member name="P:SmartFormat.Extensions.TimeFormatter.DefaultTwoLetterISOLanguageName">
+            <summary>
+            The ISO language name, which will be used for getting the <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/>.
+            </summary>
+            <remarks>
+            Culture is now determined in this sequence:<br/>
+            1. Get the culture from the <see cref="P:SmartFormat.Core.Formatting.FormattingInfo.FormatterOptions"/>.<br/>
+            2. Get the culture from the <see cref="T:System.IFormatProvider"/> argument (which may be a <see cref="T:System.Globalization.CultureInfo"/>) to <see cref="M:SmartFormat.SmartFormatter.Format(System.IFormatProvider,System.String,System.Object[])"/><br/>
+            3. The <see cref="P:System.Globalization.CultureInfo.CurrentUICulture"/>.<br/>
+            </remarks>
+        </member>
+        <member name="M:SmartFormat.Extensions.TimeFormatter.TryEvaluateFormat(SmartFormat.Core.Extensions.IFormattingInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo">
+            <summary>
+            The class contains <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> definitions for common languages.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.English">
+            <summary>
+            Gets the <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for the English language.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.French">
+            <summary>
+            Gets the <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for the French language.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.Spanish">
+            <summary>
+            Gets the <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for the Spanish language.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.Portuguese">
+            <summary>
+            Gets the <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for the Portuguese language.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.Italian">
+            <summary>
+            Gets the <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for the Italian language.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.German">
+            <summary>
+            Gets the <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for the German language.
+            </summary>
+        </member>
+        <member name="M:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.AddLanguage(System.String,SmartFormat.Extensions.Time.Utilities.TimeTextInfo)">
+            <summary>
+            Adds a <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for a language.
+            </summary>
+            <param name="twoLetterIsoLanguageName">The string to get the associated <see cref="T:System.Globalization.CultureInfo"/></param>
+            <param name="timeTextInfo">The localized <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/></param>
+        </member>
+        <member name="M:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.GetTimeTextInfo(System.String)">
+            <summary>
+            Gets the <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for a certain language.
+            If the language is not implemented, the result will be <see langword="null"/>.
+            </summary>
+            <param name="twoLetterIsoLanguageName"></param>
+            <returns>
+            The <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/> for a certain language.
+            If the language is not implemented, the result will be <see langword="null"/>.
+            </returns>
+            <remarks>
+            Custom languages can be added with <see cref="M:SmartFormat.Extensions.Time.Utilities.CommonLanguagesTimeTextInfo.AddLanguage(System.String,SmartFormat.Extensions.Time.Utilities.TimeTextInfo)"/>.
+            Custom languages override any built-in language with the same twoLetterISOLanguageName.
+            </remarks>
+        </member>
+        <member name="T:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions">
+            <summary>
+            <para>Determines all options for time formatting.</para>
+            <para>This one value actually contains 4 settings:</para>
+            <para><c>Abbreviate</c> / <c>AbbreviateOff</c></para>
+            <para><c>LessThan</c> / <c>LessThanOff</c></para>
+            <para><c>Truncate</c> &#160; <c>Auto</c> / <c>Shortest</c> / <c>Fill</c> / <c>Full</c></para>
+            <para>
+                <c>Range</c> &#160; <c>MilliSeconds</c> / <c>Seconds</c> / <c>Minutes</c> / <c>Hours</c> / <c>Days</c> /
+                <c>Weeks</c> (Min / Max)
+            </para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.None">
+            <summary>
+            Specifies that all <c>timeSpanFormatOptions</c> should be inherited from
+            <c>TimeSpanUtility.DefaultTimeFormatOptions</c>.
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.Abbreviate">
+            <summary>
+            Abbreviates units.
+            Example: "1d 2h 3m 4s 5ms"
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.AbbreviateOff">
+            <summary>
+            Does not abbreviate units.
+            Example: "1 day 2 hours 3 minutes 4 seconds 5 milliseconds"
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.LessThan">
+            <summary>
+            Displays "less than 1 (unit)" when the TimeSpan is smaller than the minimum range.
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.LessThanOff">
+            <summary>
+            Displays "0 (units)" when the TimeSpan is smaller than the minimum range.
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.TruncateShortest">
+            <summary>
+            <para>Displays the highest non-zero value within the range.</para>
+            <para>Example: "00.23:00:59.000" = "23 hours"</para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.TruncateAuto">
+            <summary>
+            <para>Displays all non-zero values within the range.</para>
+            <para>Example: "00.23:00:59.000" = "23 hours 59 minutes"</para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.TruncateFill">
+            <summary>
+            <para>Displays the highest non-zero value and all lesser values within the range.</para>
+            <para>Example: "00.23:00:59.000" = "23 hours 0 minutes 59 seconds 0 milliseconds"</para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.TruncateFull">
+            <summary>
+            <para>Displays all values within the range.</para>
+            <para>Example: "00.23:00:59.000" = "0 days 23 hours 0 minutes 59 seconds 0 milliseconds"</para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.RangeMilliSeconds">
+            <summary>
+            <para>Determines the range of units to display.</para>
+            <para>You may combine two values to form the minimum and maximum for the range.</para>
+            <para>
+                Example: (RangeMinutes) defines a range of Minutes only; (RangeHours | RangeSeconds) defines a range of Hours
+                to Seconds.
+            </para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.RangeSeconds">
+            <summary>
+            <para>Determines the range of units to display.</para>
+            <para>You may combine two values to form the minimum and maximum for the range.</para>
+            <para>
+                Example: (RangeMinutes) defines a range of Minutes only; (RangeHours | RangeSeconds) defines a range of Hours
+                to Seconds.
+            </para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.RangeMinutes">
+            <summary>
+            <para>Determines the range of units to display.</para>
+            <para>You may combine two values to form the minimum and maximum for the range.</para>
+            <para>
+                Example: (RangeMinutes) defines a range of Minutes only; (RangeHours | RangeSeconds) defines a range of Hours
+                to Seconds.
+            </para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.RangeHours">
+            <summary>
+            <para>Determines the range of units to display.</para>
+            <para>You may combine two values to form the minimum and maximum for the range.</para>
+            <para>
+                Example: (RangeMinutes) defines a range of Minutes only; (RangeHours | RangeSeconds) defines a range of Hours
+                to Seconds.
+            </para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.RangeDays">
+            <summary>
+            <para>Determines the range of units to display.</para>
+            <para>You may combine two values to form the minimum and maximum for the range.</para>
+            <para>
+                Example: (RangeMinutes) defines a range of Minutes only; (RangeHours | RangeSeconds) defines a range of Hours
+                to Seconds.
+            </para>
+            </summary>
+        </member>
+        <member name="F:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions.RangeWeeks">
+            <summary>
+            <para>Determines the range of units to display.</para>
+            <para>You may combine two values to form the minimum and maximum for the range.</para>
+            <para>
+                Example: (RangeMinutes) defines a range of Minutes only; (RangeHours | RangeSeconds) defines a range of Hours
+                to Seconds.
+            </para>
+            </summary>
+        </member>
+        <member name="T:SmartFormat.Extensions.Time.Utilities.TimeSpanUtility">
+            <summary>
+            Utility class to format a <see cref="T:System.TimeSpan"/> as a <see langword="string"/>.
+            </summary>
+        </member>
+        <member name="M:SmartFormat.Extensions.Time.Utilities.TimeSpanUtility.ToTimeString(System.TimeSpan,SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions,SmartFormat.Extensions.Time.Utilities.TimeTextInfo)">
+            <summary>
+            <para>Turns a TimeSpan into a human-readable text.</para>
+            <para>Uses the specified timeSpanFormatOptions.</para>
+            <para>For example: "31.23:59:00.555" = "31 days 23 hours 59 minutes 0 seconds 555 milliseconds"</para>
+            </summary>
+            <param name="fromTime"></param>
+            <param name="options">
+            <para>A combination of flags that determine the formatting options.</para>
+            <para>These will be combined with the default timeSpanFormatOptions.</para>
+            </param>
+            <param name="timeTextInfo">An object that supplies the text to use for output</param>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeSpanUtility.DefaultFormatOptions">
+            <summary>
+            These are the default options that will be used when no option is specified.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeSpanUtility.AbsoluteDefaults">
+            <summary>
+            These are the absolute default options that will be used as
+            a safeguard, just in case DefaultFormatOptions is missing a value.
+            </summary>
+        </member>
+        <member name="M:SmartFormat.Extensions.Time.Utilities.TimeSpanUtility.Round(System.TimeSpan,System.Int64)">
+            <summary>
+            <para>Returns the <see cref="T:System.TimeSpan"/> closest to the specified interval.</para>
+            <para>For example: <c>Round("00:57:00", TimeSpan.TicksPerMinute * 5) =&gt; "00:55:00"</c></para>
+            </summary>
+            <param name="fromTime">A <see cref="T:System.TimeSpan"/> to be rounded.</param>
+            <param name="intervalTicks">Specifies the interval for rounding. Use <c>TimeSpan.TicksPer...</c> constants.</param>
+        </member>
+        <member name="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo">
+            <summary>
+            Supplies the localized text used for <see cref="T:System.TimeSpan"/> formatting.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.PluralRule">
+            <summary>
+            The delegate for the plural rule the corresponds to the language of this <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeTextInfo"/>.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_d">
+            <summary>
+            Plural text for "d".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_day">
+            <summary>
+            Plural text for "day".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_h">
+            <summary>
+            Plural text for "h".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_hour">
+            <summary>
+            Plural text for "hour".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_lessThan">
+            <summary>
+            Text for "less than".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_m">
+            <summary>
+            Plural text for "m".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_millisecond">
+            <summary>
+            Plural text for "millisecond".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_minute">
+            <summary>
+            Plural text for "minute".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_ms">
+            <summary>
+            Plural text for "ms".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_s">
+            <summary>
+            Plural text for "s".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_second">
+            <summary>
+            Plural text for "second".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_w">
+            <summary>
+            Plural text for "w".
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.Ptxt_week">
+            <summary>
+            Plural text for "week".
+            </summary>
+        </member>
+        <member name="M:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.GetLessThanText(System.String)">
+            <summary>
+            Gets the "less than" text for the given threshold.
+            </summary>
+            <param name="minimumValue"></param>
+            <returns>The "less than" text for the given threshold.</returns>
+        </member>
+        <member name="M:SmartFormat.Extensions.Time.Utilities.TimeTextInfo.GetUnitText(SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions,System.Int32,System.Boolean)">
+            <summary>
+            Gets the text for <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions"/> ranges,
+            that correspond to a certain value.
+            </summary>
+            <param name="unit"></param>
+            <param name="value"></param>
+            <param name="abbr"></param>
+            <returns>
+            The text for <see cref="T:SmartFormat.Extensions.Time.Utilities.TimeSpanFormatOptions"/> ranges,
+            that correspond to a certain value.
+            </returns>
+        </member>
+    </members>
+</doc>

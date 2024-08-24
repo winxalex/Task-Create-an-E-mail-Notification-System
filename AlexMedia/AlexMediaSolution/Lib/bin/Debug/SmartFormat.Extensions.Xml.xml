@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartFormat.Extensions.Xml</name>
+    </assembly>
+    <members>
+        <member name="T:SmartFormat.Extensions.XElementFormatter">
+            <summary>
+            A class used to format and output <see cref="T:System.Xml.Linq.XElement"/>s.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.XElementFormatter.Names">
+            <summary>
+            Obsolete. <see cref="T:SmartFormat.Core.Extensions.IFormatter"/>s only have one unique name.
+            </summary>
+        </member>
+        <member name="P:SmartFormat.Extensions.XElementFormatter.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:SmartFormat.Extensions.XElementFormatter.CanAutoDetect">
+            <inheritdoc/>
+        </member>
+        <member name="M:SmartFormat.Extensions.XElementFormatter.TryEvaluateFormat(SmartFormat.Core.Extensions.IFormattingInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:SmartFormat.Extensions.XmlSource">
+            <summary>
+            Class to evaluate sources of type <see cref="T:System.Xml.Linq.XElement"/>.
+            Include this source, if this type shall be used.
+            </summary>
+        </member>
+        <member name="M:SmartFormat.Extensions.XmlSource.TryEvaluateSelector(SmartFormat.Core.Extensions.ISelectorInfo)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

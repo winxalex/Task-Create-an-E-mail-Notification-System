@@ -1016,13 +1016,13 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
-      "WINX/1.0.0": {
+      "Lib/1.0.0": {
         "type": "project",
         "compile": {
-          "bin/placeholder/WINX.dll": {}
+          "bin/placeholder/Lib.dll": {}
         },
         "runtime": {
-          "bin/placeholder/WINX.dll": {}
+          "bin/placeholder/Lib.dll": {}
         }
       }
     }
@@ -2545,17 +2545,17 @@
         "version.txt"
       ]
     },
-    "WINX/1.0.0": {
+    "Lib/1.0.0": {
       "type": "project",
-      "path": "../Lib/WINX.csproj",
-      "msbuildProject": "../Lib/WINX.csproj"
+      "path": "../Lib/Lib.csproj",
+      "msbuildProject": "../Lib/Lib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Lib >= 1.0.0",
       "Microsoft.Identity.Web >= 3.1.0",
-      "Microsoft.Identity.Web.UI >= 3.1.0",
-      "WINX >= 1.0.0"
+      "Microsoft.Identity.Web.UI >= 3.1.0"
     ]
   },
   "packageFolders": {
@@ -2590,8 +2590,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj": {
-              "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj"
+            "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\Lib.csproj": {
+              "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\Lib.csproj"
             }
           }
         }

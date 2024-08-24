@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Reflection;
 
 
-namespace WINX.Utils
+namespace AlexMedia.Utils
 {
     /// <summary>
     /// Class to evaluate sources of types <see cref="IDictionary"/>,

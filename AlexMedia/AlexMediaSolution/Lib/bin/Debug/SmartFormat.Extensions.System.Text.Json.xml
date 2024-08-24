@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartFormat.Extensions.System.Text.Json</name>
+    </assembly>
+    <members>
+        <member name="T:SmartFormat.Extensions.SystemTextJsonSource">
+            <summary>
+            Class to evaluate <see cref="N:System.Text.Json"/> JSON sources
+            of type <see cref="T:System.Text.Json.JsonElement"/> of any <see cref="T:System.Text.Json.JsonValueKind"/>.
+            Include this source, if any of this type shall be used.
+            </summary>
+        </member>
+        <member name="M:SmartFormat.Extensions.SystemTextJsonSource.TryEvaluateSelector(SmartFormat.Core.Extensions.ISelectorInfo)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

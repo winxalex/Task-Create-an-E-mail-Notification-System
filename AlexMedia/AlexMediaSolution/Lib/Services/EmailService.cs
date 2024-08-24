@@ -2,10 +2,10 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using WINX.Interfaces;
-using WINX.Models;
+using AlexMedia.Interfaces;
+using AlexMedia.Models;
 
-namespace WINX.Services
+namespace AlexMedia.Services
 {
     public class EmailService : IEmailService
     {

@@ -5,10 +5,10 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
-using WINX.Models;
-using WINX.Interfaces;
+using AlexMedia.Models;
+using AlexMedia.Interfaces;
 
-namespace WINX.Services
+namespace AlexMedia.Services
 {
     public class CampaignService
     {

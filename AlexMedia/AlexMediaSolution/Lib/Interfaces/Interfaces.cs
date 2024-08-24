@@ -1,9 +1,9 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WINX.Models;
+using AlexMedia.Models;
 
-namespace WINX.Interfaces
+namespace AlexMedia.Interfaces
 {
 
     // Interfaces

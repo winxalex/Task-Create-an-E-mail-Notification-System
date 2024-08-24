@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using SmartFormat.Core.Extensions;
 
-namespace WINX.Utils
+namespace AlexMedia.Utils
 {
     /// <summary>
     /*

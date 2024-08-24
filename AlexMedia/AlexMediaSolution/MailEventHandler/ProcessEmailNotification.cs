@@ -3,8 +3,8 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
 using Newtonsoft.Json;
-using WINX.Interfaces;
-using WINX.Models;
+using AlexMedia.Interfaces;
+using AlexMedia.Models;
 
 namespace MailerApp
 {

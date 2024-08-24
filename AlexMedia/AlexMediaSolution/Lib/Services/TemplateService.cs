@@ -1,15 +1,15 @@
-﻿using WINX.Models;
+﻿using AlexMedia.Models;
 using System.Text;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WINX.Interfaces;
+using AlexMedia.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Azure.Storage.Blobs;
 using System;
 using Microsoft.Extensions.Logging;
 
-namespace WINX.Services
+namespace AlexMedia.Services
 {
     public class TemplateService : ITemplateService
     {

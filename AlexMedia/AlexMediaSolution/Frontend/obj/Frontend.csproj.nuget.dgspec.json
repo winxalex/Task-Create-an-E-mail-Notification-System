@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj": {
-                "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj"
+              "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\Lib.csproj": {
+                "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\Lib.csproj"
               }
             }
           }
@@ -85,11 +85,11 @@
         }
       }
     },
-    "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj": {
+    "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\Lib.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj",
-        "projectName": "WINX",
-        "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\WINX.csproj",
+        "projectUniqueName": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\Lib.csproj",
+        "projectName": "Lib",
+        "projectPath": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Lib\\Lib.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}

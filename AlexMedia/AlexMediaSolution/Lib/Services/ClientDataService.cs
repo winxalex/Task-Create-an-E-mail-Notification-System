@@ -1,28 +1,22 @@
-﻿using Microsoft.Azure.Cosmos;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using WINX.Interfaces;
-using WINX.Models;
+using AlexMedia.Interfaces;
+using AlexMedia.Models;
 using Container = Microsoft.Azure.Cosmos.Container;
-
-namespace WINX.Services
+using Microsoft.Azure.Cosmos;
+using System;
+namespace AlexMedia.Services
 {
     public class ClientDataService : IClientDataService
     {
-        private readonly CosmosClient _cosmosClient;
         private readonly Container _container;
         private readonly ILogger<ClientDataService> _logger;
 
-        public ClientDataService(IConfiguration configuration, ILogger<ClientDataService> logger)
+        public ClientDataService(Container container, ILogger<ClientDataService> logger)
         {
-            var connectionString = configuration["CosmosDB:ConnectionString"];
-            var databaseName = configuration["CosmosDB:DatabaseName"];
-            var containerName = configuration["CosmosDB:ContainerName"];
-
-            _cosmosClient = new CosmosClient(connectionString);
-            _container = _cosmosClient.GetContainer(databaseName, containerName);
-            _logger = logger;
+            _container = container ?? throw new ArgumentNullException(nameof(container));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         /// <summary>

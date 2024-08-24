@@ -1,4 +1,4 @@
-﻿namespace WINX.Models
+﻿namespace AlexMedia.Models
 {
     public class EmailTemplate
     {

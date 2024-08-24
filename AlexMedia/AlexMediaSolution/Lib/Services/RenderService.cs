@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using WINX.Interfaces;
-using WINX.Utils;
+using AlexMedia.Interfaces;
+using AlexMedia.Utils;
 
-namespace WINX.Services
+namespace AlexMedia.Services
 {
     public class RenderService : IRenderService
     {

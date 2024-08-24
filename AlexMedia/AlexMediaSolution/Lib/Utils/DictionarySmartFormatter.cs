@@ -3,7 +3,7 @@ using SmartFormat.Core.Settings;
 using SmartFormat.Extensions;
 
 
-namespace WINX.Utils
+namespace AlexMedia.Utils
 {
     
     // Uses <c>string.Format</c>-compatible escaping of curly braces, {{ and }},
