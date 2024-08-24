@@ -4,13 +4,16 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
+using Azure.Storage.Blobs;
+using AlexMedia.Interfaces;
+using AlexMedia.Services;
+using Microsoft.Azure.Cosmos;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
 
 // Add Azure AD Authentication
 builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AzureAd")
@@ -31,6 +34,38 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("ClientOrAdmin", policy =>
         policy.RequireRole("Client", "Admin"));
 });
+
+// Inject BlobContainerClient
+builder.Services.AddSingleton(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    string connectionString = configuration["AzureBlobStorage:ConnectionString"] ?? throw new ArgumentNullException("AzureBlobStorage:ConnectionString");
+    string containerName = configuration["AzureBlobStorage:ContainerName"] ?? throw new ArgumentNullException("AzureBlobStorage:ContainerName");
+
+    var blobServiceClient = new BlobServiceClient(connectionString);
+    return blobServiceClient.GetBlobContainerClient(containerName);
+});
+
+// Add Cosmos DB Client
+builder.Services.AddSingleton(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    string cosmosConnectionString = configuration["CosmosDB:ConnectionString"] ?? throw new ArgumentNullException("CosmosDB:ConnectionString");
+    return new CosmosClient(cosmosConnectionString);
+});
+
+// Add Cosmos DB Container
+builder.Services.AddSingleton(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var cosmosClient = sp.GetRequiredService<CosmosClient>();
+    string databaseName = configuration["CosmosDB:DatabaseName"] ?? throw new ArgumentNullException("CosmosDB:DatabaseName");
+    string containerName = configuration["CosmosDB:ContainerName"] ?? throw new ArgumentNullException("CosmosDB:ContainerName");
+    return cosmosClient.GetContainer(databaseName, containerName);
+});
+
+builder.Services.AddScoped<ITemplateService, TemplateService>();
+builder.Services.AddScoped<IClientDataService, ClientDataService>();
 
 var app = builder.Build();
 

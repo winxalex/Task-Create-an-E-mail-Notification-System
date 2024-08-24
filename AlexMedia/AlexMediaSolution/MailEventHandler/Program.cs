@@ -6,6 +6,7 @@ using AlexMedia.Interfaces;
 using AlexMedia.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.Cosmos;
+using Azure.Storage.Blobs;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWebApplication()
@@ -35,6 +36,16 @@ var host = new HostBuilder()
             string databaseName = configuration["CosmosDB:DatabaseName"] ?? throw new ArgumentNullException("CosmosDB:DatabaseName");
             string containerName = configuration["CosmosDB:ContainerName"] ?? throw new ArgumentNullException("CosmosDB:ContainerName");
             return cosmosClient.GetContainer(databaseName, containerName);
+        });
+
+        services.AddSingleton(sp =>
+        {
+            var configuration = sp.GetRequiredService<IConfiguration>();
+            string connectionString = configuration["AzureBlobStorage:ConnectionString"] ?? throw new ArgumentNullException("AzureBlobStorage:ConnectionString");
+            string containerName = configuration["AzureBlobStorage:ContainerName"] ?? throw new ArgumentNullException("AzureBlobStorage:ContainerName");
+
+            var blobServiceClient = new BlobServiceClient(connectionString);
+            return blobServiceClient.GetBlobContainerClient(containerName);
         });
 
         services.AddScoped<IClientDataService, ClientDataService>();

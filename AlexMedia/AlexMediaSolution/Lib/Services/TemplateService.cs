@@ -13,18 +13,13 @@ namespace AlexMedia.Services
 {
     public class TemplateService : ITemplateService
     {
-        private readonly BlobServiceClient _blobServiceClient;
         private readonly BlobContainerClient _containerClient;
         private readonly ILogger<TemplateService> _logger;
 
-        public TemplateService(IConfiguration configuration, ILogger<TemplateService> logger)
+        public TemplateService(BlobContainerClient containerClient, ILogger<TemplateService> logger)
         {
+            _containerClient = containerClient;
             _logger = logger;
-            var connectionString = configuration["AzureStorage:ConnectionString"];
-            var containerName = configuration["AzureStorage:TemplateContainerName"];
-
-            _blobServiceClient = new BlobServiceClient(connectionString);
-            _containerClient = _blobServiceClient.GetBlobContainerClient(containerName);
         }
 
 

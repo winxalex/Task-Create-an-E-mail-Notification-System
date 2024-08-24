@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "U4rAMS2PEalqXqD9PSua3kZwN6HRi3qBm3hY1G4hNeU=",
+  "Hash": "Q7mrQFR6bl6gNy04FpHQRvzCzsnN+/gtuhoU7Spp3t8=",
   "Source": "Frontend",
   "BasePath": "_content/Frontend",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Frontend\\wwwroot",
       "Source": "Frontend",
-      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\",
       "BasePath": "_content/Frontend",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Frontend.styles.css",
+      "Identity": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Frontend.styles.css",
       "SourceId": "Frontend",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Frontend",
       "RelativePath": "Frontend.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Frontend.styles.css"
+      "OriginalItemSpec": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Frontend.styles.css"
     },
     {
-      "Identity": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Frontend.bundle.scp.css",
+      "Identity": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Frontend.bundle.scp.css",
       "SourceId": "Frontend",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Frontend",
       "RelativePath": "Frontend.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Frontend.bundle.scp.css"
+      "OriginalItemSpec": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Frontend.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\app.css",
+      "Identity": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\app.css",
       "SourceId": "Frontend",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\",
       "BasePath": "_content/Frontend",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "Frontend",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\",
       "BasePath": "_content/Frontend",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "Frontend",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\",
       "BasePath": "_content/Frontend",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\favicon.png",
+      "Identity": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\favicon.png",
       "SourceId": "Frontend",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\FrontEnd\\Frontend\\Frontend\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\QuipuTest\\src\\AlexMedia\\AlexMediaSolution\\Frontend\\wwwroot\\",
       "BasePath": "_content/Frontend",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
