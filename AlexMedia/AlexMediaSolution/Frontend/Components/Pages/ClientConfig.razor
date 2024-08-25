@@ -9,37 +9,38 @@
     <label for="clientId">Client ID:</label>
     <InputText id="clientId" @bind-Value="clientId" class="form-control" />
     <button class="btn btn-secondary" @onclick="LoadClientData">Load Client</button>
+    <button class="btn btn-primary" @onclick="AddNewClient">Add New Client</button>
 </div>
 
 @if (clientLoaded)
 {
-                                <EditForm Model="@clientData" OnValidSubmit="@HandleValidSubmit">
-                                    <DataAnnotationsValidator />
-                                    <ValidationSummary />
+                                            <EditForm Model="@clientData" OnValidSubmit="@HandleValidSubmit">
+                                                <DataAnnotationsValidator />
+                                                <ValidationSummary />
 
-                                    <div class="form-group">
-                                        <label for="email">Email:</label>
-                                        <InputText id="email" @bind-Value="clientData.Email" class="form-control" />
-                                    </div>
+                                                <div class="form-group">
+                                                    <label for="email">Email:</label>
+                                                    <InputText id="email" @bind-Value="clientData.Email" class="form-control" />
+                                                </div>
 
-                                    <div class="form-group">
-                                        <label>Templates:</label>
+                                                <div class="form-group">
+                                                    <label>Templates:</label>
             @foreach (var template in clientTemplates)
             {
-                                                                <div class="d-flex align-items-center mb-2">
-                                                                    <span class="mr-2">@template.Name</span>
-                                                                    <button class="btn btn-sm btn-danger" @onclick="() => RemoveTemplate(template.Id)">Remove</button>
-                                                                </div>
+                                                                                        <div class="d-flex align-items-center mb-2">
+                                                                                            <span class="mr-2">@template.Name</span>
+                                                                                            <button class="btn btn-sm btn-danger" @onclick="() => RemoveTemplate(template.Id)">Remove</button>
+                                                                                        </div>
             }
-                                    </div>
+                                                </div>
 
 
 
-                                    <button type="submit" class="btn btn-primary">Save Client</button>
-                                </EditForm>
+                                                <button type="submit" class="btn btn-primary">Save Client</button>
+                                            </EditForm>
 
-                                <h3>Upload Template</h3>
-                                <InputFile OnChange="@LoadTemplate" />
+                                            <h3>Upload Template</h3>
+                                            <InputFile OnChange="@LoadTemplate" />
 }
 
 @code {
@@ -56,6 +57,14 @@
             clientTemplates = await TemplateService.GetClientTemplatesAsync(clientId);
             clientLoaded = true;
         }
+    }
+
+    private async Task AddNewClient()
+    {
+        clientId = Guid.NewGuid().ToString();
+        clientData = new ClientData { Id = clientId };
+        await ClientDataService.UpsertClientDataAsync(clientData);
+        clientLoaded = true;
     }
 
     private async Task HandleValidSubmit()
@@ -84,7 +93,7 @@
 
     private async Task RemoveTemplate(string templateId)
     {
-        await TemplateService.DeleteTemplateAsync(clientId,templateId);
+        await TemplateService.DeleteTemplateAsync(clientId, templateId);
         clientTemplates = await TemplateService.GetClientTemplatesAsync(clientId);
     }
 }
