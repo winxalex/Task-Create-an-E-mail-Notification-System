@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Clients>
+
+	<Client ID="12345">
+
+		<Template Id="1">
+
+			<Name>TemplateName.html</Name>
+
+			<MarketingData>{json data string representation}</MarketingData>
+
+		</Template>
+
+	</Client>
+
+	<Client ID="54321">
+
+		<Template Id="2">
+
+			<Name>TemplateName2.html</Name>
+
+			<MarketingData>{json data string representation}</MarketingData>
+
+		</Template>
+
+	</Client>
+
+	<!-- More clients -->
+
+</Clients>
