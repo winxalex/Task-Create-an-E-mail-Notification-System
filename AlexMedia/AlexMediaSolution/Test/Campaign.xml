@@ -7,7 +7,7 @@
 
 			<Name>TemplateName.html</Name>
 
-			<MarketingData>{json data string representation}</MarketingData>
+			<MarketingData>{"title": "Your Title Here1"}</MarketingData>
 
 		</Template>
 
@@ -19,7 +19,7 @@
 
 			<Name>TemplateName2.html</Name>
 
-			<MarketingData>{json data string representation}</MarketingData>
+			<MarketingData>{"title": "Your Title Here2"}</MarketingData>
 
 		</Template>
 
