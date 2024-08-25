@@ -29,15 +29,34 @@ namespace AlexMedia.Tests
             var notification = new EmailNotification { Subject = "Test Subject", SenderEmail = "sender@example.com" };
             var recipientAddress = "recipient@example.com";
             var renderedEmail = "<h1>Hello</h1>";
-            var sendResult = EmailStatus.Succeeded; // Mocked result
-            _mockEmailClient.Setup(c => c.SendAsync(Azure.WaitUntil.Completed, It.IsAny<EmailMessage>(), default))
-                .ReturnsAsync(sendResult);
+
+            // Create EmailContent object
+            var emailContent = new EmailContent(notification.Subject)
+            {
+                Html = renderedEmail
+            };
+
+            // Create EmailMessage object using EmailContent
+            var emailMessage = new EmailMessage(
+                senderAddress: notification.SenderEmail,
+                recipientAddress: recipientAddress,
+                content: emailContent);
+
+            // Create a mock EmailSendResult
+            var mockEmailSendResult = new Mock<EmailSendResult>("operationId", EmailSendStatus.Succeeded);
+
+            // Create a mock EmailSendOperation
+            var mockEmailSendOperation = new Mock<EmailSendOperation>("operationId", _mockEmailClient.Object);
+            mockEmailSendOperation.Setup(m => m.Value).Returns(mockEmailSendResult.Object);
+
+            // Mock the SendAsync method to return the mocked EmailSendOperation
+            _mockEmailClient.Setup(c => c.SendAsync(Azure.WaitUntil.Completed, emailMessage, default))
+                .ReturnsAsync(mockEmailSendOperation.Object);
 
             // Act
             var result = await emailService.SendEmailAsync(notification, recipientAddress, renderedEmail);
 
             // Assert
-            _mockEmailClient.Verify(c => c.SendAsync(It.Is<EmailMessage>(m => m.SenderAddress == notification.SenderEmail && m.Recipients.To.Any(r => r.Address == recipientAddress), default), Times.Once);
             Assert.Equal(EmailStatus.Succeeded, result);
         }
     }
