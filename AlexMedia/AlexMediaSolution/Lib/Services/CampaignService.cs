@@ -6,6 +6,7 @@ using System.Xml;
 using Newtonsoft.Json;
 using AlexMedia.Models;
 using Azure.Messaging.ServiceBus;
+using Microsoft.Extensions.Logging; // Add this using directive
 
 namespace AlexMedia.Services
 {
@@ -13,11 +14,13 @@ namespace AlexMedia.Services
     {
         private readonly ServiceBusSender _sender;
         private readonly string _serviceBusQueueName;
+        private readonly ILogger<CampaignService> _logger; // Add logger field
 
-        public CampaignService(IConfiguration configuration, ServiceBusClient serviceBusClient)
+        public CampaignService(IConfiguration configuration, ServiceBusClient serviceBusClient, ILogger<CampaignService> logger) // Inject logger
         {
             _serviceBusQueueName = configuration["ServiceBus:QueueName"];
             _sender = serviceBusClient.CreateSender(_serviceBusQueueName);
+            _logger = logger; // Assign logger
         }
 
         public async Task StartCampaignAsync(string subject, string sender, Stream xmlFileStream)
@@ -54,33 +57,43 @@ namespace AlexMedia.Services
         /// </remarks>
         private async Task ProcessXmlAndSendNotificationsAsync(string subject, string senderEmail, Stream xmlStream)
         {
-            // Create an XML reader to parse the input stream
             using var reader = XmlReader.Create(xmlStream, new XmlReaderSettings { Async = true });
 
             while (await reader.ReadAsync())
             {
-                // Check if the current node is a "Client" element
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "Client")
                 {
-                    // Get the client ID from the "Id" attribute
-                    var clientId = reader.GetAttribute("Id");
+                    var clientId = reader.GetAttribute("ID"); // Corrected attribute name to "ID"
                     if (!string.IsNullOrEmpty(clientId))
                     {
-                        // Create a new EmailNotification object with the parsed data
-                        var notification = new EmailNotification
+                        try
                         {
-                            ClientId = clientId,
-                            SenderEmail = senderEmail,
-                            Data = reader.GetAttribute("MarketingData"),
-                            TemplateId = reader.GetAttribute("TemplateId"),
-                            Subject = subject
-                        };
+                            // Move to the Template element
+                            if (reader.ReadToDescendant("Template"))
+                            {
+                                var templateId = reader.GetAttribute("Id");
+                                var name = await reader.ReadElementContentAsStringAsync(); // Read Name element
+                                var marketingData = await reader.ReadElementContentAsStringAsync(); // Read MarketingData element
 
-                        // Serialize the notification object to JSON
-                        var message = new ServiceBusMessage(JsonConvert.SerializeObject(notification));
+                                var notification = new EmailNotification
+                                {
+                                    ClientId = clientId,
+                                    SenderEmail = senderEmail,
+                                    Data = marketingData,
+                                    TemplateId = templateId,
+                                    Subject = subject
+                                };
 
-                        // Send the message to the Service Bus queue
-                        await _sender.SendMessageAsync(message);
+                                var message = new ServiceBusMessage(JsonConvert.SerializeObject(notification));
+                                await _sender.SendMessageAsync(message); // Send email for each client
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+#if DEBUG
+                            _logger.LogError($"Error processing client {clientId}: {ex.Message}"); // Log error using logger
+#endif
+                        }
                     }
                 }
             }

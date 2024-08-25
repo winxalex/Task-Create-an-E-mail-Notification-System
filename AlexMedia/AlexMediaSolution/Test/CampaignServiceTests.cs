@@ -37,10 +37,10 @@ namespace AlexMedia.Tests
         public async Task StartCampaignAsync_ShouldSendMessage()
         {
             // Arrange
-            var campaignService = new CampaignService(_mockConfiguration.Object, _mockServiceBusClient.Object);
+            var campaignService = new CampaignService(_mockConfiguration.Object, _mockServiceBusClient.Object, _mockLogger.Object); // Added logger parameter
             var subject = "Test Subject";
             var sender = "test@example.com";
-            var xmlContent = File.ReadAllText("path/to/XMLFile1.xml"); // Read XML content from file
+            var xmlContent = File.ReadAllText("Test/Campaign.xml"); // Read XML content from file
             var xmlStream = new MemoryStream(Encoding.UTF8.GetBytes(xmlContent)); // Convert to MemoryStream
 
             // Act
