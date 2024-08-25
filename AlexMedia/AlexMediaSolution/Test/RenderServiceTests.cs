@@ -18,7 +18,7 @@ namespace AlexMedia.Tests
         public async Task RenderTemplateAsync_ShouldReturnFormattedTemplate()
         {
             // Arrange
-            var templatePath = "AlexMedia/AlexMediaSolution/Test/Template.html";
+            var templatePath = "Template.html";
             var template = await File.ReadAllTextAsync(templatePath); // Read the template from the file
             var marketingData = "{\"title\":\"Test Title\"}";
             var expectedOutput = "<h1>Test Title</h1>";

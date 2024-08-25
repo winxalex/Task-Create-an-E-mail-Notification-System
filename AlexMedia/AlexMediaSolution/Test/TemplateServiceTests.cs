@@ -33,7 +33,7 @@ namespace AlexMedia.Tests
             _mockContainerClient.Setup(c => c.GetBlobClient(It.IsAny<string>())).Returns(mockBlobClient.Object);
 
             // Read HTML content from Template.html
-            var htmlFilePath = "Test/Template.html"; // Corrected path to the HTML file
+            var htmlFilePath = "Template.html"; // Corrected path to the HTML file
             using var stream = new FileStream(htmlFilePath, FileMode.Open, FileAccess.Read);
 
             // Update to use the correct parameters for BlobContentInfo

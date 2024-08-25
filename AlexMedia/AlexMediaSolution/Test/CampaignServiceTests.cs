@@ -40,7 +40,9 @@ namespace AlexMedia.Tests
             var campaignService = new CampaignService(_mockConfiguration.Object, _mockServiceBusClient.Object, _mockLogger.Object); // Added logger parameter
             var subject = "Test Subject";
             var sender = "test@example.com";
-            var xmlContent = File.ReadAllText("Test/Campaign.xml"); // Read XML content from file
+            var filePath = "Campaign.xml"; // Updated file path
+            Assert.True(File.Exists(filePath), "The XML file does not exist."); // Check if file exists
+            var xmlContent = File.ReadAllText(filePath); // Read XML content from file
             var xmlStream = new MemoryStream(Encoding.UTF8.GetBytes(xmlContent)); // Convert to MemoryStream
 
             // Act
