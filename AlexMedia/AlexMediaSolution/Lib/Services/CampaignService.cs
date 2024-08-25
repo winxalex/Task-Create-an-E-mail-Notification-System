@@ -6,7 +6,8 @@ using System.Xml;
 using Newtonsoft.Json;
 using AlexMedia.Models;
 using Azure.Messaging.ServiceBus;
-using Microsoft.Extensions.Logging; // Add this using directive
+using Microsoft.Extensions.Logging;
+using WINX.Extensions; // Add this using directive
 
 namespace AlexMedia.Services
 {
@@ -25,6 +26,9 @@ namespace AlexMedia.Services
 
         public async Task StartCampaignAsync(string subject, string sender, Stream xmlFileStream)
         {
+            /// <summary>
+            /// Initiates the campaign by processing the provided XML file stream and sending notifications.
+            /// </summary>
             await ProcessXmlAndSendNotificationsAsync(subject, sender, xmlFileStream);
         }
 
@@ -59,44 +63,58 @@ namespace AlexMedia.Services
         {
             using var reader = XmlReader.Create(xmlStream, new XmlReaderSettings { Async = true });
 
-            while (await reader.ReadAsync())
+            if (await reader.ReadToDescendantAsync("Client"))
             {
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "Client")
+                var clientId = reader.GetAttribute("ID"); // Corrected attribute name to "ID"
+                if (!string.IsNullOrEmpty(clientId))
                 {
-                    var clientId = reader.GetAttribute("ID"); // Corrected attribute name to "ID"
-                    if (!string.IsNullOrEmpty(clientId))
+                    try
                     {
-                        try
+                        if (await reader.ReadToDescendantAsync("Template"))
                         {
-                            // Move to the Template element
-                            if (reader.ReadToDescendant("Template"))
+
+                            var templateId = reader.GetAttribute("Id");
+                            var name = string.Empty; // Initialize name
+                            if (await reader.ReadToDescendantAsync("Name"))
                             {
-                                var templateId = reader.GetAttribute("Id");
-                                var name = await reader.ReadElementContentAsStringAsync(); // Read Name element
-                                var marketingData = await reader.ReadElementContentAsStringAsync(); // Read MarketingData element
 
-                                var notification = new EmailNotification
-                                {
-                                    ClientId = clientId,
-                                    SenderEmail = senderEmail,
-                                    Data = marketingData,
-                                    TemplateId = templateId,
-                                    Subject = subject
-                                };
+                                name = await reader.ReadElementContentAsStringAsync();
 
-                                var message = new ServiceBusMessage(JsonConvert.SerializeObject(notification));
-                                await _sender.SendMessageAsync(message); // Send email for each client
                             }
+
+                            var marketingData = string.Empty; // Initialize marketingData
+                            if (await reader.ReadToDescendantAsync("MarketingData")) // Use extension method
+                            {
+                                marketingData = await reader.ReadElementContentAsStringAsync();
+
+                            }
+
+                            var notification = new EmailNotification
+                            {
+                                ClientId = clientId,
+                                SenderEmail = senderEmail,
+                                Data = marketingData,
+                                TemplateId = templateId,
+                                Subject = subject
+                            };
+
+                            var message = new ServiceBusMessage(JsonConvert.SerializeObject(notification));
+                            await _sender.SendMessageAsync(message); // Send email for each client
+
+
+
                         }
-                        catch (Exception ex)
-                        {
+                    }
+                    catch (Exception ex)
+                    {
 #if DEBUG
-                            _logger.LogError($"Error processing client {clientId}: {ex.Message}"); // Log error using logger
+                        _logger.LogError($"Error processing client {clientId}: {ex.Message}"); // Log error using logger
 #endif
-                        }
                     }
                 }
             }
         }
     }
 }
+
+

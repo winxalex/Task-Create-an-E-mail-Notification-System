@@ -192,6 +192,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\XmlReaderExtensions.cs" />
     <Compile Include="Interfaces\Interfaces.cs" />
     <Compile Include="Models\ClientData.cs" />
     <Compile Include="Models\EmailNotification.cs" />
