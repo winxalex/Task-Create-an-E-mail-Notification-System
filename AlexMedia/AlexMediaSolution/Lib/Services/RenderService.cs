@@ -19,9 +19,8 @@ namespace AlexMedia.Services
         public async Task<string> RenderTemplateAsync(string template, string marketingData)
         {
             var data=JsonToDictionaryConverter.deserializeToDictionaryOrList(marketingData);
-            DictionarySmartFormatter.Formatter.Format(template, data);
-
-            return await Task.FromResult(DictionarySmartFormatter.Formatter.Format(template, marketingData));
+       
+            return await Task.FromResult(DictionarySmartFormatter.Formatter.Format(template, data));
         }
     }
 }
