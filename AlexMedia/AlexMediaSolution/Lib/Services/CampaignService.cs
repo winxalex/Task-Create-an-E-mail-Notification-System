@@ -1,27 +1,23 @@
-﻿using Azure.Messaging.ServiceBus;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
 using AlexMedia.Models;
-using AlexMedia.Interfaces;
+using Azure.Messaging.ServiceBus;
 
 namespace AlexMedia.Services
 {
     public class CampaignService
     {
-        private readonly ServiceBusClient _serviceBusClient;
+        private readonly ServiceBusSender _sender;
         private readonly string _serviceBusQueueName;
-        private readonly IClientDataService _clientDataService;
 
-        public CampaignService(IConfiguration configuration, IClientDataService clientDataService)
+        public CampaignService(IConfiguration configuration, ServiceBusClient serviceBusClient)
         {
-            var serviceBusConnectionString = configuration["ServiceBus:ConnectionString"];
             _serviceBusQueueName = configuration["ServiceBus:QueueName"];
-            _serviceBusClient = new ServiceBusClient(serviceBusConnectionString);
-            _clientDataService = clientDataService;
+            _sender = serviceBusClient.CreateSender(_serviceBusQueueName);
         }
 
         public async Task StartCampaignAsync(string subject, string sender, Stream xmlFileStream)
@@ -58,9 +54,6 @@ namespace AlexMedia.Services
         /// </remarks>
         private async Task ProcessXmlAndSendNotificationsAsync(string subject, string senderEmail, Stream xmlStream)
         {
-            // Create a sender for the Service Bus queue
-            await using var sender = _serviceBusClient.CreateSender(_serviceBusQueueName);
-
             // Create an XML reader to parse the input stream
             using var reader = XmlReader.Create(xmlStream, new XmlReaderSettings { Async = true });
 
@@ -87,7 +80,7 @@ namespace AlexMedia.Services
                         var message = new ServiceBusMessage(JsonConvert.SerializeObject(notification));
 
                         // Send the message to the Service Bus queue
-                        await sender.SendMessageAsync(message);
+                        await _sender.SendMessageAsync(message);
                     }
                 }
             }

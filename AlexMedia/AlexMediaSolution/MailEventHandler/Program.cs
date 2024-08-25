@@ -7,6 +7,7 @@ using AlexMedia.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.Cosmos;
 using Azure.Storage.Blobs;
+using Azure.Messaging.ServiceBus;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWebApplication()
@@ -48,10 +49,25 @@ var host = new HostBuilder()
             return blobServiceClient.GetBlobContainerClient(containerName);
         });
 
+        services.AddSingleton(sp =>
+        {
+            var configuration = sp.GetRequiredService<IConfiguration>();
+            string serviceBusConnectionString = configuration["ServiceBus:ConnectionString"] ?? throw new ArgumentNullException("ServiceBus:ConnectionString");
+            return new ServiceBusClient(serviceBusConnectionString);
+        });
+
+        services.AddSingleton(sp =>
+        {
+            var serviceBusClient = sp.GetRequiredService<ServiceBusClient>();
+            var queueName = sp.GetRequiredService<IConfiguration>()["ServiceBus:QueueName"];
+            return serviceBusClient.CreateSender(queueName); // Register ServiceBusSender
+        });
+
         services.AddScoped<IClientDataService, ClientDataService>();
         services.AddScoped<ITemplateService, TemplateService>();
         services.AddScoped<IRenderService, RenderService>();
         services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<CampaignService>();
 
     })
     .Build();

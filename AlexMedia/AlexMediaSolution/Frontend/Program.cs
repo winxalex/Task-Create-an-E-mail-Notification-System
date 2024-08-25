@@ -8,6 +8,7 @@ using Azure.Storage.Blobs;
 using AlexMedia.Interfaces;
 using AlexMedia.Services;
 using Microsoft.Azure.Cosmos;
+using Azure.Messaging.ServiceBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,6 +63,21 @@ builder.Services.AddSingleton(sp =>
     string databaseName = configuration["CosmosDB:DatabaseName"] ?? throw new ArgumentNullException("CosmosDB:DatabaseName");
     string containerName = configuration["CosmosDB:ContainerName"] ?? throw new ArgumentNullException("CosmosDB:ContainerName");
     return cosmosClient.GetContainer(databaseName, containerName);
+});
+
+builder.Services.AddSingleton(sp =>
+        {
+            var configuration = sp.GetRequiredService<IConfiguration>();
+            string serviceBusConnectionString = configuration["ServiceBus:ConnectionString"] ?? throw new ArgumentNullException("ServiceBus:ConnectionString");
+            return new ServiceBusClient(serviceBusConnectionString);
+        });
+
+// Register ServiceBusSender as a singleton
+builder.Services.AddSingleton(sp =>
+{
+    var serviceBusClient = sp.GetRequiredService<ServiceBusClient>();
+    var queueName = builder.Configuration["ServiceBus:QueueName"];
+    return serviceBusClient.CreateSender(queueName); // Register ServiceBusSender
 });
 
 builder.Services.AddScoped<ITemplateService, TemplateService>();

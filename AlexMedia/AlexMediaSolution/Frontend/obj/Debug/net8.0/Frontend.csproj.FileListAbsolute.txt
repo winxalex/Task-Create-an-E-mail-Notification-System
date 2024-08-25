@@ -240,11 +240,8 @@ D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\
 D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\WINX.pdb
 D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\SmartFormat.xml
 D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\Castle.Core.xml
-D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\Azure.Messaging.ServiceBus.xml
 D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\Azure.Communication.Email.xml
 D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\ZString.xml
-D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\Microsoft.Azure.Amqp.xml
-D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\bin\Debug\net8.0\Azure.Core.Amqp.xml
 D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\obj\Debug\net8.0\Frontend.csproj.AssemblyReference.cache
 D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\obj\Debug\net8.0\Frontend.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projects\QuipuTest\src\AlexMedia\AlexMediaSolution\Frontend\obj\Debug\net8.0\Frontend.AssemblyInfoInputs.cache

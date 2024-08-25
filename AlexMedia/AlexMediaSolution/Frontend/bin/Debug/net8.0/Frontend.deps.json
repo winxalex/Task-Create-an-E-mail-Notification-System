@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Frontend/1.0.0": {
         "dependencies": {
+          "Azure.Messaging.ServiceBus": "7.18.1",
           "Azure.Storage.Blobs": "12.21.2",
           "Lib": "1.0.0",
           "Microsoft.Azure.Cosmos": "3.42.0",
@@ -36,6 +37,19 @@
           }
         }
       },
+      "Azure.Core.Amqp/1.3.1": {
+        "dependencies": {
+          "Microsoft.Azure.Amqp": "2.6.7",
+          "System.Memory": "4.5.4",
+          "System.Memory.Data": "1.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.Core.Amqp.dll": {
+            "assemblyVersion": "1.3.1.0",
+            "fileVersion": "1.300.124.38003"
+          }
+        }
+      },
       "Azure.Identity/1.11.4": {
         "dependencies": {
           "Azure.Core": "1.41.0",
@@ -50,6 +64,21 @@
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.11.4.0",
             "fileVersion": "1.1100.424.31005"
+          }
+        }
+      },
+      "Azure.Messaging.ServiceBus/7.18.1": {
+        "dependencies": {
+          "Azure.Core": "1.41.0",
+          "Azure.Core.Amqp": "1.3.1",
+          "Microsoft.Azure.Amqp": "2.6.7",
+          "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
+          "System.Memory.Data": "1.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.Messaging.ServiceBus.dll": {
+            "assemblyVersion": "7.18.1.0",
+            "fileVersion": "7.1800.124.38102"
           }
         }
       },
@@ -157,6 +186,14 @@
           "lib/net8.0/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.123.58008"
+          }
+        }
+      },
+      "Microsoft.Azure.Amqp/2.6.7": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.Amqp.dll": {
+            "assemblyVersion": "2.4.0.0",
+            "fileVersion": "2.6.7.0"
           }
         }
       },
@@ -1538,14 +1575,6 @@
           }
         }
       },
-      "Azure.Messaging.ServiceBus/7.18.1.0": {
-        "runtime": {
-          "Azure.Messaging.ServiceBus.dll": {
-            "assemblyVersion": "7.18.1.0",
-            "fileVersion": "7.1800.124.38102"
-          }
-        }
-      },
       "Azure.Communication.Email/1.0.1.0": {
         "runtime": {
           "Azure.Communication.Email.dll": {
@@ -1559,22 +1588,6 @@
           "ZString.dll": {
             "assemblyVersion": "2.6.0.0",
             "fileVersion": "2.6.0.0"
-          }
-        }
-      },
-      "Microsoft.Azure.Amqp/2.4.0.0": {
-        "runtime": {
-          "Microsoft.Azure.Amqp.dll": {
-            "assemblyVersion": "2.4.0.0",
-            "fileVersion": "2.6.7.0"
-          }
-        }
-      },
-      "Azure.Core.Amqp/1.3.1.0": {
-        "runtime": {
-          "Azure.Core.Amqp.dll": {
-            "assemblyVersion": "1.3.1.0",
-            "fileVersion": "1.300.124.38003"
           }
         }
       }
@@ -1593,12 +1606,26 @@
       "path": "azure.core/1.41.0",
       "hashPath": "azure.core.1.41.0.nupkg.sha512"
     },
+    "Azure.Core.Amqp/1.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AY1ZM4WwLBb9L2WwQoWs7wS2XKYg83tp3yVVdgySdebGN0FuIszuEqCy3Nhv6qHpbkjx/NGuOTsUbF/oNGBgwA==",
+      "path": "azure.core.amqp/1.3.1",
+      "hashPath": "azure.core.amqp.1.3.1.nupkg.sha512"
+    },
     "Azure.Identity/1.11.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Sf4BoE6Q3jTgFkgBkx7qztYOFELBCo+wQgpYDwal/qJ1unBH73ywPztIJKXBXORRzAeNijsuxhk94h0TIMvfYg==",
       "path": "azure.identity/1.11.4",
       "hashPath": "azure.identity.1.11.4.nupkg.sha512"
+    },
+    "Azure.Messaging.ServiceBus/7.18.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-40KKWWA1PYlZQiMkEZdG7zof0kHfmak1PeCihp/W4vTbb+EYsHNypHEV63R41UBwVcU/lLGQQab6Gl6J8c9Byg==",
+      "path": "azure.messaging.servicebus/7.18.1",
+      "hashPath": "azure.messaging.servicebus.7.18.1.nupkg.sha512"
     },
     "Azure.Security.KeyVault.Certificates/4.6.0": {
       "type": "package",
@@ -1662,6 +1689,13 @@
       "sha512": "sha512-4n79+eJnSXaqZIx5c6A+Dtl2bIYwcrAujKDfnDJnTkJa0n5NH4UBCCDNEyONW11UeBYzZb1G4DTE7YWOFbw+9Q==",
       "path": "microsoft.aspnetcore.dataprotection.abstractions/8.0.1",
       "hashPath": "microsoft.aspnetcore.dataprotection.abstractions.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.Azure.Amqp/2.6.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AR0zs1xlNvwN2nKdwPOFKJQpSTEOlxyGxUJtXyLOWTypP5XtTfShCfENkKwXZa+xIW6dzhY1t+zoI/PvMH1dxQ==",
+      "path": "microsoft.azure.amqp/2.6.7",
+      "hashPath": "microsoft.azure.amqp.2.6.7.nupkg.sha512"
     },
     "Microsoft.Azure.Cosmos/3.42.0": {
       "type": "package",
@@ -2665,27 +2699,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Azure.Messaging.ServiceBus/7.18.1.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Azure.Communication.Email/1.0.1.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "ZString/2.6.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.Azure.Amqp/2.4.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Azure.Core.Amqp/1.3.1.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
